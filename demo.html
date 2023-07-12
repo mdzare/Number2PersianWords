@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" dir="rtl" />
+    
+    <title></title>
+
+</head>
+<body style="direction:rtl">
+    <div style="padding:20px;margin:auto;width:500px;height:100px;margin-top:200px;background-color:antiquewhite">
+
+        <span>عدد را وارد کنید</span>
+        <input type="text" onkeyup="convert()" id="num"/>
+        <br />
+        <br />
+        <label for="toman">تومان</label>
+        <input type="checkbox" id="toman" onchange="convert()"/>
+        <label style="margin:5px">واحد پولی</label>
+        <input type="text" id="currency" style="width:50px" onkeyup="convert()"/>
+
+        <br />
+        <br />
+        <span>دستور:</span>
+        <span id="cmd" style="display:block;float:inline-end;direction:ltr"></span>
+        <br />
+        <span id="result" style="background-color:cornsilk;direction:ltr"></span>
+    </div>
+    <script src="number2PersianWords.js"></script>
+    <script>
+        const convert = () => {
+            var num = document.getElementById('num').value;
+            var spn = document.getElementById('result');
+            var tmn = document.getElementById('toman').checked;
+            var crncy = document.getElementById('currency').value;
+            var cmd = document.getElementById('cmd');
+
+            spn.innerHTML = number2PersianWords(num, { toman: tmn, currency: crncy });
+            cmd.innerHTML = `number2PersianWords(${num}, { toman: ${tmn}, currency: ${crncy} })`
+        }
+    </script>
+</body>
+</html>
